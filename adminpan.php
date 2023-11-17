@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 
     session_start();
@@ -96,28 +95,6 @@
 			$statementliggingopties->bindParam(":product_id",$product_id);
 			$statementliggingopties->execute(); 
 			}
-=======
-    session_start();
-    require 'database.php';
-
-    if (isset($_POST["submit"])) { 
-    $titel = htmlspecialchars($_POST['titel']);
-    $prijs = htmlspecialchars($_POST['prijs']);
-    $adres = htmlspecialchars($_POST['adres']);
-    $postcode = htmlspecialchars($_POST['postcode']);
-    $plaatsnaam = htmlspecialchars($_POST['plaatsnaam']);
-    $description = htmlspecialchars($_POST['description']);
-    $statement = $conn->prepare("INSERT INTO product 
-        (titel,prijs,adres,postcode,plaatsnaam,description) 
-        VALUES (:titel,:prijs,:adres,:postcode,:plaatsnaam,:description)");
-    $statement->bindParam(":titel",$titel);
-    $statement->bindParam(":prijs",$prijs);
-    $statement->bindParam(":adres",$adres);
-    $statement->bindParam(":postcode",$postcode);
-    $statement->bindParam(":plaatsnaam",$plaatsnaam);
-    $statement->bindParam(":description",$description);
-    $statement->execute(); 
->>>>>>> b7f9a99d31e09ed16f53a23d8f2441112f8ece9b
 	}
 ?>
 
@@ -129,18 +106,16 @@
 	<title></title>
 </head>
 <body>
-<<<<<<< HEAD
 
 	<form name="form" method="post" enctype="multipart/form-data">
-=======
+
 	<form name="form" method="post">
->>>>>>> b7f9a99d31e09ed16f53a23d8f2441112f8ece9b
 		<input class="" type="text" name="titel" id="titel" placeholder="Titel" required><br><br>
 		<input class="" type="text" name="prijs" id="prijs" placeholder="Price" required><br><br>
 		<input class="" type="text" name="adres" id="adres" placeholder="Adres" required><br><br>
 		<input class="" type="text" name="postcode" id="postcode" placeholder="Postcode" required><br><br>
 		<input class="" type="text" name="plaatsnaam" id="plaatsnaam" placeholder="Plaatsnaam" required><br><br>
-<<<<<<< HEAD
+
 		<input class="" type="text" name="description" id="description" placeholder="Description" required><br><br>			
 		<input type="file" name="images1[]"  accept="image/*"><br><br>
 		<input type="file" name="images[]" multiple accept="image/*">
@@ -184,14 +159,5 @@
 		<button name="submit" >Submit</button>
 	</form>
 
-	<script>
-
-	</script>
-
-=======
-		<input class="" type="text" name="description" id="description" placeholder="Description" required><br><br>
-		<button name="submit" >Submit</button>
-	</form>
->>>>>>> b7f9a99d31e09ed16f53a23d8f2441112f8ece9b
 </body>
 </html>
