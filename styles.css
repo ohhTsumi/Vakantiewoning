@@ -1,3 +1,98 @@
 .invis {
 	display: none;
+
+}
+
+.tableHeader {
+	
+}
+
+.spaceUnder {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 1px solid black;
+  200px
+}
+
+.tabelTitel {
+	border: 1px solid black;
+	width: 200px;
+}
+
+.tabelPrijs {
+	border: 1px solid black;
+	width: 200px;
+}
+
+.tabelAdres {
+	border: 1px solid black;
+	width: 200px;
+}
+
+.tabelPostcode {
+	border: 1px solid black;
+	width: 200px;
+}
+
+.tabelPlaatsnaam {
+	border: 1px solid black;
+	width: 200px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    overflow: auto;
+}
+header {
+	height: 80px;
+}
+nav {
+  background-color: #333;
+  overflow: hidden;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-left: 18.5%;
+}
+
+li {
+  float: left;
+  width: 15%;
+  height: 5%;
+  list-style-type: none;
+  display: inline-block;
+  font-weight: bold;
+}
+
+li a {
+  display: block;
+  color: #00A651;
+  text-align: center;
+  text-decoration: none;
+  font-size: 34px;
+  margin-top: 5%;
+  padding: 15px 0px;
+}
+
+li a:hover {
+  color: orange;
+  scale: 1.1;
+}
+
+.li {
+	position: absolute;
+	top: -50%;
+}
+
+.logo {
+	width: 30%;
+	scale: 1.5;
 }
