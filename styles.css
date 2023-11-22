@@ -1,5 +1,6 @@
 .invis {
 	display: none;
+
 }
 
 .tableHeader {
@@ -94,5 +95,4 @@ li a:hover {
 .logo {
 	width: 30%;
 	scale: 1.5;
-
 }

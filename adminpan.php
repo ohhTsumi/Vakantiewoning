@@ -12,34 +12,36 @@
 
     if (isset($_POST["submit"])) { 
 
-		$uploads_dir = 'uploads';
-		$images = [];
-		foreach ($_FILES["images"]["error"] as $key => $error) {
-		    if ($error == UPLOAD_ERR_OK) {
-		        $tmp_name = $_FILES["images"]["tmp_name"][$key];
-		        // basename() may prevent filesystem traversal attacks;
-		        // further validation/sanitation of the filename may be appropriate
-		        $name = md5(time()) . basename($_FILES["images"]["name"][$key]);
-		        $images[] = $name;
-		        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-		    }
-		}
+        $uploads_dir = 'uploads';
 
-		$images1 = [];
-		foreach ($_FILES["images1"]["error"] as $key => $error) {
-		    if ($error == UPLOAD_ERR_OK) {
-		        $tmp_name = $_FILES["images"]["tmp_name"][$key];
-		        // basename() may prevent filesystem traversal attacks;
-		        // further validation/sanitation of the filename may be appropriate
-		        $name1 = md5(time()) . basename($_FILES["images"]["name"][$key]);
-		        $primaryimages[] = $name;
-		        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-		    }
-		}
+                $images1 = [];
+        foreach ($_FILES["images1"]["error"] as $key => $error) {
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES["images1"]["tmp_name"][$key];
+                // basename() may prevent filesystem traversal attacks;
+                // further validation/sanitation of the filename may be appropriate
+                $name = md5(time()) . basename($_FILES["images1"]["name"][$key]);
+                $primaryimages[] = $name;
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
+        }
+
+        $images = [];
+        foreach ($_FILES["images"]["error"] as $key => $error) {
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES["images"]["tmp_name"][$key];
+                // basename() may prevent filesystem traversal attacks;
+                // further validation/sanitation of the filename may be appropriate
+                $name = md5(time()) . basename($_FILES["images"]["name"][$key]);
+                $images[] = $name;
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
+        }
 
 
   
 		$primary = 1;
+		$notprimary = 0;
 	    $titel = htmlspecialchars($_POST['titel']);
 	    $prijs = htmlspecialchars($_POST['prijs']);
 	    $adres = htmlspecialchars($_POST['adres']);
@@ -61,10 +63,11 @@
 	    $product_id = $conn->lastInsertId();
 	    foreach($images as $image) {
 	    $statementafbeelding = $conn->prepare("INSERT INTO afbeelding 
-	        (product_id,afbeelding_url) 
-	        VALUES (:product_id,:afbeelding_url)");
+	        (product_id,afbeelding_url,afbeelding_primary) 
+	        VALUES (:product_id,:afbeelding_url,:afbeelding_primary)");
 	    $statementafbeelding->bindParam(":product_id",$product_id);
 	    $statementafbeelding->bindParam(":afbeelding_url",$image);
+		$statementafbeelding->bindParam(":afbeelding_primary",$notprimary);
 	    $statementafbeelding->execute(); 
 	    }
 

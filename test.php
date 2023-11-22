@@ -11,9 +11,9 @@
     $html_output .= "<form name='form' method='post'>";
     $html_output .= "<input name='id' class='invis' value=" .$id . ">";
     $html_output .= "</input>";
-        $html_output .= "<label> Titel: ";
+    $html_output .= "<label> Titel: ";
     $html_output .= "<input type='text' name='titel' id='titel' value='" . $house['titel'] ."' required><br><br>";
-        $html_output .= "<label> Price: ";
+    $html_output .= "<label> Price: ";
     $html_output .= "<input type='text' name='prijs' id='prijs' value='" . $house['prijs'] ."' required><br><br>";
     $html_output .= "<label> Adres: ";
     $html_output .= "<input type='text' name='adres' id='adres' value='" . $house['adres'] ."' required><br><br>";
@@ -35,6 +35,7 @@
 	    $plaatsnaam = htmlspecialchars($_POST['plaatsnaam']);
 	    $description = htmlspecialchars($_POST['description']);
 	    $id = $_POST['id'] ;
+
 		$sql = "UPDATE product SET  titel = :titel ,adres = :adres , postcode = 
 		:postcode , plaatsnaam = :plaatsnaam, prijs = :prijs, description = :description WHERE product_id = :id";
 		$stmt = $conn->prepare($sql);
