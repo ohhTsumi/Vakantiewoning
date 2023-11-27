@@ -9,6 +9,10 @@ $html_output = '';
     foreach ($houses as $house) {
         $images = $images_by_product_id[$house['product_id']] ?? false;
         $id = $house['product_id'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
         $html_output .= "<table><tr class='tableHeader' >";
         $html_output .=  "<td class='spaceUnder, tabelTitel' >" . $house['titel'] . "</td>";
         $html_output .=  "<td class='spaceUnder, tabelPrijs'>" . $house['prijs'] . "</td>";
@@ -31,6 +35,10 @@ $html_output = '';
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 ?>
 <!DOCTYPE html>
 <html>

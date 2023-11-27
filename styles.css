@@ -1,42 +1,77 @@
 .invis {
 	display: none;
+<<<<<<< HEAD
 }
 
 .tableHeader {
 	left: 20%;
+=======
+
+}
+
+.tableHeader {
+	
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .spaceUnder {
   text-align: center;
+<<<<<<< HEAD
   padding-top: 10px;
   padding-bottom: 10px;
   border: 1px solid black;
+=======
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 1px solid black;
+  200px
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .tabelTitel {
 	border: 1px solid black;
+<<<<<<< HEAD
     width: 18%;
+=======
+	width: 200px;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .tabelPrijs {
 	border: 1px solid black;
+<<<<<<< HEAD
     width: 18%;
+=======
+	width: 200px;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .tabelAdres {
 	border: 1px solid black;
+<<<<<<< HEAD
     width: 18%;
+=======
+	width: 200px;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .tabelPostcode {
 	border: 1px solid black;
+<<<<<<< HEAD
     width: 18%;
+=======
+	width: 200px;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 .tabelPlaatsnaam {
 	border: 1px solid black;
+<<<<<<< HEAD
     width: 18%;
 
+=======
+	width: 200px;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 
 body {
@@ -44,8 +79,11 @@ body {
     padding: 0;
     font-family: Arial;
     overflow: auto;
+<<<<<<< HEAD
     background-color: #e5e5e5;
 
+=======
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 }
 header {
 	height: 80px;
@@ -56,17 +94,30 @@ nav {
 
 }
 
+<<<<<<< HEAD
 .navul {
+=======
+ul {
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+<<<<<<< HEAD
   margin-left: 13%;
 }
 
 .navli {
   float: left;
   width: 16%;
+=======
+  margin-left: 18.5%;
+}
+
+li {
+  float: left;
+  width: 15%;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
   height: 5%;
   list-style-type: none;
   display: inline-block;
@@ -89,11 +140,16 @@ li a:hover {
 }
 
 .li {
+<<<<<<< HEAD
+=======
+	position: absolute;
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 	top: -50%;
 }
 
 .logo {
 	width: 30%;
+<<<<<<< HEAD
 	scale: 2.5;
 
 }
@@ -232,3 +288,7 @@ label {
     margin-left: 30%;
 }
 
+=======
+	scale: 1.5;
+}
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933

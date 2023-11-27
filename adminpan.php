@@ -12,6 +12,7 @@
 
     if (isset($_POST["submit"])) { 
 
+<<<<<<< HEAD
 		$uploads_dir = 'uploads';
 
 				$images1 = [];
@@ -38,9 +39,38 @@
 		    }
 		}
 
+=======
+        $uploads_dir = 'uploads';
+
+                $images1 = [];
+        foreach ($_FILES["images1"]["error"] as $key => $error) {
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES["images1"]["tmp_name"][$key];
+                // basename() may prevent filesystem traversal attacks;
+                // further validation/sanitation of the filename may be appropriate
+                $name = md5(time()) . basename($_FILES["images1"]["name"][$key]);
+                $primaryimages[] = $name;
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
+        }
+
+        $images = [];
+        foreach ($_FILES["images"]["error"] as $key => $error) {
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES["images"]["tmp_name"][$key];
+                // basename() may prevent filesystem traversal attacks;
+                // further validation/sanitation of the filename may be appropriate
+                $name = md5(time()) . basename($_FILES["images"]["name"][$key]);
+                $images[] = $name;
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
+        }
+
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 
   
 		$primary = 1;
+		$notprimary = 0;
 	    $titel = htmlspecialchars($_POST['titel']);
 	    $prijs = htmlspecialchars($_POST['prijs']);
 	    $adres = htmlspecialchars($_POST['adres']);
@@ -62,10 +92,11 @@
 	    $product_id = $conn->lastInsertId();
 	    foreach($images as $image) {
 	    $statementafbeelding = $conn->prepare("INSERT INTO afbeelding 
-	        (product_id,afbeelding_url) 
-	        VALUES (:product_id,:afbeelding_url)");
+	        (product_id,afbeelding_url,afbeelding_primary) 
+	        VALUES (:product_id,:afbeelding_url,:afbeelding_primary)");
 	    $statementafbeelding->bindParam(":product_id",$product_id);
 	    $statementafbeelding->bindParam(":afbeelding_url",$image);
+		$statementafbeelding->bindParam(":afbeelding_primary",$notprimary);
 	    $statementafbeelding->execute(); 
 	    }
 
@@ -153,6 +184,7 @@ $html_output = '';
 	<title></title>
 </head>
 <body>
+<<<<<<< HEAD
 <?php 
 require "header.php";
 ?>
@@ -173,6 +205,74 @@ require "header.php";
 		<label class="labelimage" for="images" >Upload Secondary image</label>
 		<input class="adminpaninput" id="images" type="file" name="images[]" multiple accept="image/*" maxlength="3">
 		<ul class="ul" id="properties">
+=======
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="file"],
+        button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+	</style>
+
+	<form name="form" method="post" enctype="multipart/form-data">
+
+	<form name="form" method="post">
+		<input class="" type="text" name="titel" id="titel" placeholder="Titel" required><br><br>
+		<input class="" type="text" name="prijs" id="prijs" placeholder="Price" required><br><br>
+		<input class="" type="text" name="adres" id="adres" placeholder="Adres" required><br><br>
+		<input class="" type="text" name="postcode" id="postcode" placeholder="Postcode" required><br><br>
+		<input class="" type="text" name="plaatsnaam" id="plaatsnaam" placeholder="Plaatsnaam" required><br><br>
+
+		<input class="" type="text" name="description" id="description" placeholder="Description" required><br><br>			
+		<input type="file" name="images1[]"  accept="image/*"><br><br>
+		<input type="file" name="images[]" multiple accept="image/*">
+		<ul id="properties">
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
             <?php
             $sql ="SELECT eigenschap_id,eigenschap_naam FROM 
             eigenschappen";
@@ -220,6 +320,7 @@ require "header.php";
 	<?php echo $html_output; ?>
 </div>
 
+<<<<<<< HEAD
 <script type="text/javascript">
 	let addListing = document.getElementById('adminpanform');
 	let add = document.getElementById('formadd');
@@ -241,5 +342,7 @@ require "header.php";
 	}
 
 </script>
+=======
+>>>>>>> bad87a18e91ae073ca9786c638e84e14fb008933
 </body>
 </html>
