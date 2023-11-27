@@ -2,7 +2,7 @@
     session_start();
     require 'database.php';
 
-    if (isset($_POST["submit"])) { 
+    if (isset($_POST["submitEigenschap"])) { 
         $eigenschappen = htmlspecialchars($_POST['eigenschappen']);
         $statement = $conn->prepare("INSERT INTO eigenschappen 
             (eigenschap_naam) 
@@ -11,7 +11,7 @@
         $statement->execute(); 
     }
 
-    if (isset($_POST["submit1"])) { 
+    if (isset($_POST["submitLiggingopties"])) { 
         $liggingopties = htmlspecialchars($_POST['liggingopties']);
         $statement1 = $conn->prepare("INSERT INTO liggingopties 
             (liggingopties_naam) 
@@ -33,9 +33,9 @@
 <body>
     <form name="form" method="post" enctype="multipart/form-data">
         <input class="" type="text" name="eigenschappen" id="eigenschappen" placeholder="Eigenschappen">
-        <button name="submit">Submit</button><br><br>
+        <button name="submitEigenschap">Submit</button><br><br>
         <input class="" type="text" name="liggingopties" id="liggingopties" placeholder="Liggingopties">
-        <button name="submit1" >Submit</button>
+        <button name="submit1Liggingopties">Submit</button>
     </form>
 </body>
 </html>
