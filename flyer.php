@@ -18,11 +18,15 @@
             $eigenschappen = $conn->prepare('SELECT * FROM product_eigenschappen where product_id = :id');
             $eigenschappen->bindParam(':id', $product_id, PDO::PARAM_INT);
             $eigenschappen->execute();
+            $eigenschappen = $eigenschappen->fetchAll();
             $images_by_product_id = [];
             $eigenschap_by_product_id = [];
             $html_output = " ";
-            var_dump($eigenschappen['eigenschap']);
-            var_dump($product_id);
+
+            foreach ($eigenschappen as $row) {
+                $eigenschappenHouse = $row['eigenschap_id'];
+
+            }
 
             foreach($images as $image) {
                 if(!isset($images_by_product_id[$image['product_id']])) {
@@ -88,7 +92,34 @@
             } else {
                 echo "No product ID specified";
             }
+
+            $getEigenschap = $conn->prepare('SELECT eigenschap_naam FROM eigenschappen WHERE eigenschap_id = :eigenschappenhouse');
+            $getEigenschap->bindParam(':eigenschappenhouse', $eigenschappenHouse, PDO::PARAM_INT);
+            $getEigenschap->execute();
+            $getEigenschap = $getEigenschap->fetchAll();
+
+            $getLigging = $conn->prepare('SELECT liggingopties_naam FROM liggingopties; WHERE liggingopties_id = :ligginghouse');
+            $getLigging->bindParam(':ligginghouse', $liggingHouse, PDO::PARAM_INT);
+            $getLigging->execute();
+            $getLigging = $getLigging->fetchAll();
+            $html_eigenschap = "";
+            $html_ligging = "";
+            foreach ($getEigenschap as $jan) {
+                $html_eigenschap .= "<li class='eigenschapList'>" . $jan['eigenschap_naam'] . "</li>";
+            }
+            foreach ($getLigging as $janner) {
+                $html_ligging .= "<li class='liggingList'>" . $janner['liggingopties_naam'] . "</li>";
+                
+            }
         ?>
+        <h3>Liggingopties</h3>
+        <ul>
+        <?php echo $html_ligging;?>
+        </ul>
+        <ul>
+        <h3>Eigenschappen</h3>
+        <?php echo $html_eigenschap; ?>
+        </ul>
     </div>
 </body>
 </html>
