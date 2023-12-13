@@ -9,6 +9,8 @@
 <body>
     <div class="flyer">
         <?php
+
+            //Fetch van de database
             session_start();
             require 'database.php';
             $product_id = $_GET['id'];
@@ -118,7 +120,7 @@
             $getLigging->execute();
             $getLigging = $getLigging->fetchAll();
 
-            // HTML generation for liggingopties
+            // HTML generation voor liggingopties
             $html_eigenschap = "";
             $html_ligging = "";
             foreach ($getLigging as $liggers) {
