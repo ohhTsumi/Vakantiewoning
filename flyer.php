@@ -61,7 +61,7 @@
                 <?php
                 echo "<div class='product-details'>";
                 echo "<h1>" . $house['plaatsnaam'] . ", " . $house['adres']. "</h1>";
-                echo "<p>" . "<strong>" . $house['prijs'] . "</strong>" . "</p>";
+                echo "<p>" . "<strong>" . $house['prijs'] . " Euro" . "</strong>" . "</p>";
                 echo "</div>";
 
                 // Display primary image
