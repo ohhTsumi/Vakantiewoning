@@ -28,6 +28,8 @@
 
             }
 
+            
+
             foreach($images as $image) {
                 if(!isset($images_by_product_id[$image['product_id']])) {
                     $images_by_product_id[$image['product_id']] = [];
@@ -100,25 +102,33 @@
                 echo "No product ID specified";
             }
 
-            $getEigenschap = $conn->prepare('SELECT eigenschap_naam FROM eigenschappen WHERE eigenschap_id = :eigenschappenhouse');
-            $getEigenschap->bindParam(':eigenschappenhouse', $eigenschappenHouse, PDO::PARAM_INT);
+            $getEigenschap = $conn->prepare('SELECT eigenschappen.eigenschap_naam 
+                                 FROM eigenschappen 
+                                 JOIN product_eigenschappen ON eigenschappen.eigenschap_id = product_eigenschappen.eigenschap_id 
+                                 WHERE product_eigenschappen.product_id = :product_id');
+            $getEigenschap->bindParam(':product_id', $product_id, PDO::PARAM_INT);
             $getEigenschap->execute();
             $getEigenschap = $getEigenschap->fetchAll();
 
-            $getLigging = $conn->prepare('SELECT liggingopties_naam FROM liggingopties; WHERE liggingopties_id = :ligginghouse');
-            $getLigging->bindParam(':ligginghouse', $liggingHouse, PDO::PARAM_INT);
+            $getLigging = $conn->prepare('SELECT liggingopties.liggingopties_naam 
+                               FROM liggingopties 
+                               JOIN product_liggingopties ON liggingopties.liggingopties_id = product_liggingopties.liggingopties_id 
+                               WHERE product_liggingopties.product_id = :product_id');
+            $getLigging->bindParam(':product_id', $product_id, PDO::PARAM_INT);
             $getLigging->execute();
             $getLigging = $getLigging->fetchAll();
+
+            // HTML generation for liggingopties
             $html_eigenschap = "";
             $html_ligging = "";
+            foreach ($getLigging as $liggers) {
+                $html_ligging .= "<li class='liggingList'>" . $liggers['liggingopties_naam'] . "</li>";
+            }
+
             foreach ($getEigenschap as $eigenschappelen) {
                 $html_eigenschap .= "<li class='eigenschapList'>" . $eigenschappelen['eigenschap_naam'] . "</li>";
             }
-            foreach ($getLigging as $liggers) {
-                $html_ligging .= "<li class='liggingList'>" . $liggers['liggingopties_naam'] . "</li>";
-                
-            }
-        ?>
+    ?>
     <div class="flex-container">
     <div class="liggy">
         <h3>Liggingopties</h3>
