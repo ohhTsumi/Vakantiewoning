@@ -56,12 +56,19 @@
 
                 ?>
 
-                <img class="flyerLogo" src="https://cdn.discordapp.com/attachments/1024577266312818709/1180077393646469170/Vrijwonen_makelaar.png?ex=657c1bb7&is=6569a6b7&hm=462bb24509c3c7873bf649235cda581b3547af9a897fcef6ad71e7ac3820e32a&"> </img>
+                <div class="flex-container-img">
+                    <div><img class="flyerLogo" src="https://cdn.discordapp.com/attachments/1024577266312818709/1180077393646469170/Vrijwonen_makelaar.png?ex=657c1bb7&is=6569a6b7&hm=462bb24509c3c7873bf649235cda581b3547af9a897fcef6ad71e7ac3820e32a&"> </img></div>
+                    <div class="info1">Vakantiewoningmakelaar Vrij Wonen<br>
+                    Disketteweg 2<br>
+                    3815 AV Amersfoort<br><br>
+                    info@vrijwonen.nl<br>
+                    033-112233</div>
+                </div>
 
                 <?php
                 echo "<div class='product-details'>";
-                echo "<h1>" . $house['plaatsnaam'] . ", " . $house['adres']. "</h1>";
-                echo "<p>" . "<strong>" . $house['prijs'] . " Euro" . "</strong>" . "</p>";
+                echo "<h3>" . $house['plaatsnaam'] . ", " . $house['adres']. "</h3>";
+                echo "<p>" . "Prijs: " . "<strong>" . $house['prijs'] . "</strong>" . " euro" . "</p>";
                 echo "</div>";
 
                 // Display primary image
@@ -104,22 +111,28 @@
             $getLigging = $getLigging->fetchAll();
             $html_eigenschap = "";
             $html_ligging = "";
-            foreach ($getEigenschap as $jan) {
-                $html_eigenschap .= "<li class='eigenschapList'>" . $jan['eigenschap_naam'] . "</li>";
+            foreach ($getEigenschap as $eigenschappelen) {
+                $html_eigenschap .= "<li class='eigenschapList'>" . $eigenschappelen['eigenschap_naam'] . "</li>";
             }
-            foreach ($getLigging as $janner) {
-                $html_ligging .= "<li class='liggingList'>" . $janner['liggingopties_naam'] . "</li>";
+            foreach ($getLigging as $liggers) {
+                $html_ligging .= "<li class='liggingList'>" . $liggers['liggingopties_naam'] . "</li>";
                 
             }
         ?>
+    <div class="flex-container">
+    <div class="liggy">
         <h3>Liggingopties</h3>
         <ul>
         <?php echo $html_ligging;?>
         </ul>
-        <ul>
+    </div>
+    <div class="eiggy">
         <h3>Eigenschappen</h3>
+        <ul>
         <?php echo $html_eigenschap; ?>
         </ul>
+    </div>
+    </div>
     </div>
 </body>
 </html>
